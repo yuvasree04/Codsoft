@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the number of subjects: ");
+        int NoOfSub = sc.nextInt();
+        int[] mark = new int[NoOfSub];
+        int Totalmark = 0;
+
+        for (int i = 0; i < NoOfSub; i++) {
+            System.out.print("Enter marks for subject " + (i + 1) + ": ");
+            mark[i] = sc.nextInt();
+            Totalmark += mark[i];
+        }
+
+        double avgpercent = (double) Totalmark / NoOfSub;
+        char grade;
+
+        if (avgpercent >= 90) {
+            grade = 'A';
+        } else if (avgpercent >= 70) {
+            grade = 'B';
+        } else if (avgpercent >= 50) {
+            grade = 'C';
+        } else {
+            grade = 'F';
+        }
+
+        System.out.println("Total marks: " + Totalmark);
+        System.out.println("Average percent: " + avgpercent);
+        System.out.println("Grade: " + grade);
+
+        sc.close();
+    }
+}
