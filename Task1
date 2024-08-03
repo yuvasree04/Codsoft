@@ -1,0 +1,40 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Random random = new Random();
+        int randomNumber = random.nextInt(100) + 1;
+        System.out.println(randomNumber);
+        System.out.println("Guess any number between 1-100");
+        
+        Scanner scanner = new Scanner(System.in);
+        int count;
+        int guess = -1;
+        int score = 100;
+
+        for (count = 1; count <= 10; count++) {
+            System.out.print("Attempt " + count + ": ");
+            guess = scanner.nextInt();
+
+            if (randomNumber == guess) {
+                System.out.println("Correct");
+                break; // Exit the loop if the guess is correct
+            } else if (randomNumber > guess) {
+                System.out.println("Too low");
+            } else {
+                System.out.println("Too high");
+            }
+            score = score - 10;
+        }
+
+        if (randomNumber != guess) {
+            System.out.println("Sorry, you've used all attempts. The correct number was " + randomNumber);
+            score = 0;
+        }
+        
+        System.out.println("Your score: " + score);
+
+        scanner.close();
+    }
+}
